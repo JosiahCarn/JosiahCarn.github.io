@@ -1,0 +1,53 @@
+:root {
+  --bg: #0f1115;
+  --surface: #181b22;
+  --text: #e6e8ec;
+  --muted: #9aa3b2;
+  --accent: #f5a524;
+  --radius: 12px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  padding: 0 1.5rem 4rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+header { padding: 4rem 0 2rem; }
+nav a { color: var(--muted); margin-right: 1.25rem; text-decoration: none; }
+nav a:hover { color: var(--accent); }
+h1 { font-size: 3rem; margin-top: 1.5rem; }
+.tagline { color: var(--accent); font-size: 1.1rem; }
+
+section { margin-top: 3.5rem; }
+h2 { font-size: 1.6rem; margin-bottom: 1rem; border-bottom: 1px solid var(--surface); padding-bottom: .5rem; }
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.project-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  text-decoration: none;
+  color: inherit;
+  transition: transform .15s, outline .15s;
+}
+.project-card:hover { transform: translateY(-3px); outline: 1px solid var(--accent); }
+.project-card h3 { color: var(--accent); margin-bottom: .5rem; }
+.project-card p { color: var(--muted); }
+
+a { color: var(--accent); }
+
+@media (max-width: 600px) {
+  h1 { font-size: 2.2rem; }
+}
