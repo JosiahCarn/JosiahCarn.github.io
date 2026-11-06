@@ -3,42 +3,120 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Josiah | Electrical Engineer</title>
+  <title>Josiah Carnwath | Electrical Engineering</title>
+  <meta name="description" content="Josiah Carnwath, electrical engineering student at Messiah University. Embedded systems, sensor fusion, and electrical design.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <h1>Josiah</h1>
-    <p class="tagline">Electrical Engineering · Automation · Controls</p>
-  </header>
 
-  <main>
-    <section id="about">
-      <h2>About</h2>
-      <p>Senior electrical engineering student graduating May 2027. Summer automation engineering intern at Rettew Associates.</p>
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="#top">Josiah Carnwath</a>
+    <nav class="nav">
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">Dark</button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="container">
+
+    <section class="hero">
+      <p class="eyebrow">Electrical Engineering · Messiah University</p>
+      <h1>Building embedded systems and electrical designs that work in the real world.</h1>
+      <p class="lead">I'm an electrical engineering student (class of 2027) working across sensor fusion, finite-state control, circuit design, and CAD. Currently a consulting engineering intern at Rettew.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#projects">See my projects</a>
+        <a class="btn btn-outline" href="assets/Josiah_Carnwath_Resume.pdf" download>Download resume</a>
+      </div>
     </section>
 
-    <section id="projects">
+    <section class="block" id="projects">
+      <p class="section-label">Selected projects</p>
       <h2>Projects</h2>
-      <div class="project-grid">
-        <a class="project-card" href="projects/project-name.html">
-          <h3>Project Name</h3>
-          <p>One-line summary of the problem and result.</p>
+      <div class="grid">
+        <a class="card" href="projects/stance-control-orthosis.html">
+          <div class="card-img"><img src="assets/projects/sco/fsm-diagram.png" alt="Finite-state machine diagram for the stance control orthosis"></div>
+          <div class="card-body">
+            <h3>Stance Control Orthosis</h3>
+            <p>A wearable knee orthosis that locks and unlocks based on gait phase, using IMU sensor fusion and a finite-state machine.</p>
+            <div class="tags"><span class="tag">Arduino</span><span class="tag">Sensor fusion</span><span class="tag">FSM</span><span class="tag">Embedded</span></div>
+          </div>
+        </a>
+
+        <a class="card" href="projects/desk-buddy.html">
+          <div class="card-img">Desk Buddy photo</div>
+          <div class="card-body">
+            <h3>Desk Buddy</h3>
+            <p>A desk companion with a color TFT display showing time from GPS, pressure and altitude from a BMP280, touch controls, and audio.</p>
+            <div class="tags"><span class="tag">Arduino Uno</span><span class="tag">GPS</span><span class="tag">BMP280</span><span class="tag">Touch TFT</span></div>
+          </div>
         </a>
       </div>
     </section>
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <p><a href="mailto:you@example.com">you@example.com</a> · <a href="https://linkedin.com/in/yourprofile">LinkedIn</a> · <a href="https://github.com/yourusername">GitHub</a></p>
+    <section class="block" id="experience">
+      <p class="section-label">Experience</p>
+      <h2>Experience</h2>
+      <div class="timeline-item">
+        <h3>Engineering Consulting Intern, Rettew</h3>
+        <p class="meta">Mechanicsburg, PA · June 2026 to present</p>
+        <ul>
+          <li>Supported feasibility and detailed design of electrical power systems and substation infrastructure for a steel pipe manufacturing facility.</li>
+          <li>Developed electrical design documentation and single-line diagrams in AutoCAD.</li>
+          <li>Supported project management and subcontractor coordination for a fall protection design project.</li>
+          <li>Developed bid packages and proposals, coordinating technical information and project requirements.</li>
+        </ul>
+      </div>
     </section>
-  </main>
 
-  <script src="js/main.js"></script>
+    <section class="block" id="education">
+      <p class="section-label">Education</p>
+      <h2>Education</h2>
+      <div class="timeline-item">
+        <h3>B.S. Electrical Engineering, Messiah University</h3>
+        <p class="meta">Mechanicsburg, PA · Expected May 2027 · GPA 3.70 / 4.0</p>
+        <ul>
+          <li>Dean's List, School of Science, Engineering and Health</li>
+        </ul>
+      </div>
+      <div class="logo-row" style="margin-top: var(--space-6);">
+        <img src="assets/logos/messiah-logo.png" class="messiah" alt="Messiah University logo">
+        <img src="assets/logos/collaboratory-logo.png" alt="The Collaboratory at Messiah University logo">
+      </div>
+    </section>
+
+    <section class="block">
+      <p class="section-label">Skills</p>
+      <h2>Tools and skills</h2>
+      <div class="tags" style="margin-bottom: var(--space-4);">
+        <span class="tag">Arduino</span><span class="tag">MATLAB</span><span class="tag">Sensor fusion</span><span class="tag">Finite-state machines</span><span class="tag">Embedded systems</span><span class="tag">Circuit analysis</span><span class="tag">Power systems</span><span class="tag">AutoCAD</span><span class="tag">SolidWorks</span><span class="tag">Fusion 360</span><span class="tag">Excel</span>
+      </div>
+    </section>
+
+    <section class="block" id="contact">
+      <p class="section-label">Contact</p>
+      <h2>Let's connect</h2>
+      <p class="prose"><a href="mailto:josiahcarnwath25@gmail.com">josiahcarnwath25@gmail.com</a> · <a href="https://www.linkedin.com/in/josiah-carnwath-521780302/" target="_blank" rel="noopener">LinkedIn</a></p>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>© Josiah Carnwath</span>
+    <span>Built with plain HTML and CSS</span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
 </body>
 </html>
