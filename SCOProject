@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stance Control Orthosis | Josiah Carnwath</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="../index.html">Josiah Carnwath</a>
+    <nav class="nav">
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#contact">Contact</a>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">Dark</button>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <a class="back" href="../index.html#projects">← All projects</a>
+
+  <section class="project-hero">
+    <p class="eyebrow">Messiah University Collaboratory · Team project</p>
+    <h1>Stance Control Orthosis</h1>
+    <p class="lead">A wearable knee orthosis that locks and unlocks the knee joint based on the wearer's gait phase. I built the sensor fusion, the gait-phase state machine, and the encoder and IMU processing that drive it in real time.</p>
+
+    <div class="facts">
+      <div class="fact"><div class="k">Role</div><div class="v">Team member, primary firmware</div></div>
+      <div class="fact"><div class="k">Timeline</div><div class="v">Jan 2025 to present</div></div>
+      <div class="fact"><div class="k">Platform</div><div class="v">Arduino, IMU, magnetic encoder</div></div>
+      <div class="fact"><div class="k">Status</div><div class="v">In development</div></div>
+    </div>
+  </section>
+
+  <div class="prose" style="max-width: 720px;">
+
+    <h3>The problem</h3>
+    <p>A stance control knee device should lock the joint while the user is standing or pushing off, and release it during swing so they can step forward. Making that call reliably means reading the leg's motion and deciding what gait phase the user is in, in real time, from noisy sensors.</p>
+
+    <h3>What I built</h3>
+    <ul>
+      <li><strong>Sensor fusion:</strong> complementary filtering that combines gyroscope and accelerometer data from the IMU into a stable estimate of leg tilt and angular rate.</li>
+      <li><strong>Encoder reading:</strong> PWM interrupts that read the magnetic encoder, so knee angle updates are not delayed by the main loop.</li>
+      <li><strong>Gait-phase state machine:</strong> a three-state machine (Swing, Stance, Pre-Swing) that uses threshold constraints on tilt, knee angle, angular velocity, and timing to decide when to lock and unlock.</li>
+    </ul>
+
+    <h3>How the state machine works</h3>
+    <p>The device moves through a fixed cycle. Each transition requires every constraint on that edge to be met, so one noisy reading cannot change the state on its own.</p>
+
+    <figure class="figure">
+      <img src="../assets/projects/sco/fsm-diagram.png" alt="State diagram with Swing (unlocked), Stance (locked), and Pre-Swing (armed) states and their transition constraints">
+      <figcaption>Gait-phase state machine. Swing (unlocked) to Stance (locked) to Pre-Swing (armed), with a timeout path back to Stance and a strain-edge trigger that returns to Swing.</figcaption>
+    </figure>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>State</th><th>Entered when</th><th>Purpose</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Swing (unlocked)</td><td>Leg is in front of the body, knee nearly straight, and knee extension is slowing and reversing, after a minimum swing time</td><td>Knee is free to bend so the user can step</td></tr>
+          <tr><td>Stance (locked)</td><td>Leg is behind the body, movement is slowing, and the stance has lasted at least 300 ms or 45% of a stride</td><td>Knee is locked to support the user's weight</td></tr>
+          <tr><td>Pre-Swing (armed)</td><td>Walking is detected and the leg is slowing, after a minimum stance time</td><td>Waits for a clinician-tuned strain edge before unlocking, which prevents premature release</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Why it's designed this way</h3>
+    <ul>
+      <li>Timing constraints (minimum stance and swing durations, or a percentage of stride) stop the device from switching states on brief spikes.</li>
+      <li>The Pre-Swing state gives the device a short armed window, so unlocking happens at the right point in the gait cycle and not just at the first movement.</li>
+      <li>An overtime rule returns the device to Stance if Pre-Swing lasts too long, so the knee does not stay unlocked when the user has stopped.</li>
+    </ul>
+
+    <h3>Results and what's next</h3>
+    <p>[Add testing results here, such as gait-phase detection accuracy, latency, or bench test outcomes from the Cycle 1 report.]</p>
+    <p>Next steps include tuning the clinician-set thresholds and validating the state transitions with user testing.</p>
+
+    <h3>Photos</h3>
+    <div class="placeholder">Add photos of the orthosis here</div>
+
+  </div>
+
+  <div class="pager">
+    <a href="../index.html#projects">← All projects</a>
+    <a href="desk-buddy.html">Next: Desk Buddy →</a>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>© Josiah Carnwath</span>
+    <span><a href="../index.html">Home</a></span>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>
